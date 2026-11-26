@@ -1,5 +1,5 @@
 ##
-## digiserve/ab-file-processor
+## ghcr.io/cruglobal-ai/ab-file-processor
 ##
 ## This is our microservice for our AppBuilder file processing.
 ##
@@ -8,21 +8,21 @@
 ##
 ## Docker Commands:
 ## ---------------
-## $ docker build -t digiserve/ab-file-processor:master .
-## $ docker push digiserve/ab-file-processor:master
+## $ docker build -t ghcr.io/cruglobal-ai/ab-file-processor:master .
+## $ docker push ghcr.io/cruglobal-ai/ab-file-processor:master
 ##
 ## Multi-platform (M1/M2/M3 Mac → amd64 + arm64):
 ## $ docker buildx create --use  # once, if no builder
-## $ docker buildx build --provenance=true --sbom=true --platform linux/amd64,linux/arm64 -t digiserve/ab-file-processor:master --push .
+## $ docker buildx build --provenance=true --sbom=true --platform linux/amd64,linux/arm64 -t ghcr.io/cruglobal-ai/ab-file-processor:master --push .
 ## Or use: $ DOCKER_ARGS="--platform linux/amd64,linux/arm64 --push" ./build.sh
 ## Supply chain: use --provenance=true --sbom=true when pushing to a registry for Docker Hub attestations and license visibility.
 ##
 
 ARG BRANCH=master
 
-FROM digiserve/service-cli:${BRANCH}
+FROM ghcr.io/cruglobal-ai/service-cli:${BRANCH}
 
-# Can skip this step if digiserve/service-cli is refreshed recently
+# Can skip this step if ghcr.io/cruglobal-ai/service-cli is refreshed recently
 RUN apt-get update
 
 RUN apt-get install -y clamav clamav-daemon imagemagick
